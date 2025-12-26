@@ -1,7 +1,7 @@
 # ======================
 # Build stage
 # ======================
-FROM node:18-bullseye AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ RUN pnpm build
 # ======================
 # Runtime stage
 # =====================
-FROM node:18-bullseye AS runner
+FROM node:18-alpine AS runner
 
 WORKDIR /app
 
