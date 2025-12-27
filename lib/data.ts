@@ -108,7 +108,7 @@ export const documentation: Documentation[] = [
     id: "doc-2",
     webinarTitle: "Your First Step into Cloud Computing",
     date: "2025-11-29",
-    description: "Dokumentasi dan materi pembelajaran untuk pemula yang ingin memulai perjalanan di ekosistem Cloud.",
+    description: "Dokumentasi untuk pemula yang ingin memulai perjalanan di ekosistem Cloud.",
     posterUrl: "/images/documentation-first-step.jpg",
   },
   {

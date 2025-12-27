@@ -9,9 +9,9 @@ import { Users, Video, Mic2, ArrowRight, MessageSquare, Handshake } from "lucide
 
 export default function Home() {
   // 🔹 FILTER: hanya webinar upcoming yang ADA poster & bukan placeholder
-  const visibleUpcomingWebinars = upcomingWebinars
-    .filter((webinar) => webinar.posterUrl && !webinar.posterUrl.includes("placeholder"))
-    .slice(0, 5) // 🔹 tampilkan 5 saja
+  const visibleUpcomingWebinars = upcomingWebinars.filter(
+    (webinar) => webinar.posterUrl && !webinar.posterUrl.includes("placeholder"),
+  )
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -20,9 +20,9 @@ export default function Home() {
       <main className="flex-1">
         {/* ================= HERO SECTION ================= */}
         <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary to-blue-800 py-20 text-white lg:py-32">
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl space-y-6">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl space-y-6">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl whitespace-nowrap">
                 Dicoding Cloud Community
               </h1>
 
@@ -39,11 +39,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-6">
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-blue-50">
-                  <Link href="/webinars">Upcoming Webinars</Link>
-                </Button>
-              </div>
+              {/* Button removed */}
             </div>
           </div>
 
@@ -103,7 +99,7 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {visibleUpcomingWebinars.map((webinar) => (
+              {visibleUpcomingWebinars.slice(0, 5).map((webinar) => (
                 <WebinarCard key={webinar.id} webinar={webinar} />
               ))}
             </div>

@@ -7,7 +7,7 @@ import { BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Documentation - Dicoding Cloud Community",
-  description: "Akses dokumentasi lengkap dari webinar Dicoding Cloud Community termasuk slide dan repository.",
+  description: "Akses dokumentasi lengkap dari webinar Dicoding Cloud Community.",
 }
 
 export default function DocumentationPage() {
@@ -25,7 +25,7 @@ export default function DocumentationPage() {
               <h1 className="text-4xl font-bold tracking-tight">Documentation</h1>
             </div>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Dokumentasi lengkap dari webinar yang telah berlangsung. Akses slide presentasi dan repository GitHub.
+              Dokumentasi lengkap dari webinar yang telah berlangsung.
             </p>
           </div>
         </section>
