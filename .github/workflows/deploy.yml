@@ -25,9 +25,7 @@ jobs:
         context: .
         push: true
         tags: |
-          nitaoktaviani/dcc-web:v1
-          nitaoktaviani/dcc-web:latest
-
+          haechanlovelove/dcc-web:v1
     - name: Deploy to EC2
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -35,10 +33,10 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull nitaoktaviani/dcc-web:v1
+          docker pull haechanlovelove/dcc-web:v1
           docker stop dcc-web || true
           docker rm dcc-web || true
           docker run -d \
             --name dcc-web \
             -p 3000:3000 \
-            nitaoktaviani/dcc-web:v1
+            haechanlovelove/dcc-web:v1
