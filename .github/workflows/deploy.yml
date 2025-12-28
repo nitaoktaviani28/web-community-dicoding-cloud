@@ -24,19 +24,17 @@ jobs:
       with:
         context: .
         push: true
-        tags: |
-          haechanlovelove/dcc-web:v1
-    - name: Deploy to EC2
+        tags: haechanlovelove/dcc-web:v1
+
+    - name: Deploy to EC2 using Docker Compose
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull haechanlovelove/dcc-web:v1
-          docker stop dcc-web || true
-          docker rm dcc-web || true
-          docker run -d \
-            --name dcc-web \
-            -p 3000:3000 \
-            haechanlovelove/dcc-web:v1
+          cd /home/ec2-user/todo-app
+
+          docker compose pull
+          docker compose down
+          docker compose up -d
