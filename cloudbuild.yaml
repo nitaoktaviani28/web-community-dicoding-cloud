@@ -1,18 +1,32 @@
 steps:
+# 1. Build image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - build
     - -t
-    - asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
+    - asia-southeast2-docker.pkg.dev/$PROJECT_ID/app-repo/app:$SHORT_SHA
     - .
 
+# 2. Push image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - push
-    - asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
+    - asia-southeast2-docker.pkg.dev/$PROJECT_ID/app-repo/app:$SHORT_SHA
+
+# 3. Create release ke Cloud Deploy
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+    - deploy
+    - releases
+    - create
+    - release-$SHORT_SHA
+    - --delivery-pipeline=app-pipeline
+    - --region=asia-southeast2
+    - --images=app=asia-southeast2-docker.pkg.dev/$PROJECT_ID/app-repo/app:$SHORT_SHA
 
 images:
-- asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
+- asia-southeast2-docker.pkg.dev/$PROJECT_ID/app-repo/app:$SHORT_SHA
 
 options:
   logging: CLOUD_LOGGING_ONLY
