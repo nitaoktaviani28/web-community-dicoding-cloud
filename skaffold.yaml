@@ -10,3 +10,7 @@ manifests:
 
 deploy:
   kubectl: {}
+
+build:
+  artifacts:
+    - image: app   
