@@ -21,8 +21,9 @@ steps:
     - releases
     - create
     - release-$SHORT_SHA
-    - --delivery-pipeline=app-pipeline
+    - --delivery-pipeline=pipeline-app
     - --region=asia-southeast2
+    - --source=.
     - --images=app=asia-southeast2-docker.pkg.dev/$PROJECT_ID/app-repo/app:$SHORT_SHA
 
 images:
