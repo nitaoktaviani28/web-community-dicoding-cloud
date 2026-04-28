@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - build
+    - -t
+    - asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
+    - .
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - push
+    - asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
+
+images:
+- asia-southeast2-docker.pkg.dev/cloudapps-poc/app-repo/app:$SHORT_SHA
