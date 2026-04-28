@@ -5,9 +5,7 @@ metadata:
 
 manifests:
   rawYaml:
-    - k8s/deployment.yaml
-    - k8s/service.yaml
-
+    - k8s/*.yaml 
 deploy:
   kubectl: {}
 
